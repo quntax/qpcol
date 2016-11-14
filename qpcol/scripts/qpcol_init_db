@@ -1,0 +1,17 @@
+#!/bin/bash
+
+CONFIGDIR=${HOME}/.config/merlin
+
+if [[ ! -d ${CONFIGDIR} ]]; then
+    mkdir -p $CONFIGDIR
+fi
+
+DATABASEFILE=${CONFIGDIR}/qpcol.db
+
+if [[ -f ${DATABASEFILE} ]]; then
+    echo "Database already exists, quitting..."
+    exit 1
+fi
+
+cat /usr/share/qpcol/qpcol.sql | sqlite3 ${DATABASEFILE}
+echo "Database initialized"

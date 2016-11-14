@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [[ $# -ne 1 ]]
+then
+    echo "Plugin name missing"
+    exit
+fi
+
+PLUGIN_NAME=`echo $1|sed -r "s/(.)(.+)/\u\1\L\2\E/"`
+PLUGIN_FILE=`echo $1|sed -r "s/(.+)/\L\1\E/"`
+PLUGIN_DEF=`echo $1|sed -r "s/(.+)/\U\1\E/"`_H
+
+DIR=`dirname $BASH_SOURCE`
+
+cat $DIR/template.cpp|sed -e "s/%PLUGIN_NAME%/${PLUGIN_NAME}/"|sed -e "s/%PLUGIN_FILE%/${PLUGIN_FILE}/"|sed -e "s/%PLUGIN_DEF%/${PLUGIN_DEF}/" > ${PLUGIN_FILE}.cpp
+cat $DIR/template.h|sed -e "s/%PLUGIN_NAME%/${PLUGIN_NAME}/"|sed -e "s/%PLUGIN_FILE%/${PLUGIN_FILE}/"|sed -e "s/%PLUGIN_DEF%/${PLUGIN_DEF}/" > ${PLUGIN_FILE}.h

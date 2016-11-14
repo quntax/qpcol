@@ -1,0 +1,28 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=QPcol
+GenericName=Qt Personal Collection of Videos
+GenericName[pl]=Qt Manager Kolekcji Wideo
+Comment=Video collection manager
+Comment[pl]=Manager kolekcji filmów
+Exec=qpcol
+TryExec=qpcol
+Icon=qpcol.xpm
+Terminal=false
+Categories=AudioVideo;Video;Player;Qt;
+StartupNotify=true
+MimeType=video/mpeg;video/x-mpeg;video/x-mpeg2;video/mp4;video/msvideo;video/x-msvideo;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/x-fli;video/x-flv;video/x-theora;video/x-matroska;
+Actions=OpenLocalFile;OpenQPcolUrl;AddLocalFile;
+
+[Desktop Action OpenLocalFile]
+Exec=qpcol -f "%F"
+Name=Open local file
+
+[Desktop Action OpenQPcolUrl]
+Exec=qpcol -u "%u"
+Name=Open video by hash
+
+[Desktop Action AddLocalFile]
+Exec=qpcol -a "%F"
+Name=Add video to database if not known yet

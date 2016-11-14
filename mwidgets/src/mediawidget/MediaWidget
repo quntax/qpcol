@@ -1,0 +1,4 @@
+#include <FlatStyle>
+#include "mediawidget.h"
+#include "downloaddialog.h"
+#include "mediaplayer.h"

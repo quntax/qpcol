@@ -1,0 +1,5 @@
+#!/bin/bash
+
+DATABASE=$HOME/.config/merlin/qpcol.db
+
+sqlite3 $DATABASE .dump | gzip -c > qpcol_$(date +%Y%m%d_%H%M%S).sql.gz

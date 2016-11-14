@@ -1,0 +1,5 @@
+#include "qhttprequest.h"
+#include "qhttprequestabstract.h"
+#include "qhttprequestproxy.h"
+#include "qhttpdownload.h"
+#include "qhttphash.h"

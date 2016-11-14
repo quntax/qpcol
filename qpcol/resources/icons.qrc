@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>add.png</file>
+        <file>cancel.png</file>
+        <file>edit_tags_video.png</file>
+        <file>favorite_video.png</file>
+        <file>mark_video.png</file>
+        <file>ok.png</file>
+        <file>question_mark.png</file>
+        <file>quit_qpcol.png</file>
+        <file>remove.png</file>
+        <file>remove_video.png</file>
+        <file>reset_filter_tag.png</file>
+        <file>play_video.png</file>
+        <file>arrow-down.png</file>
+        <file>arrow-up.png</file>
+        <file>arrow-left.png</file>
+        <file>arrow-right.png</file>
+        <file>edit-clear-locationbar-rtl.png</file>
+        <file>emblem-favorite.png</file>
+        <file>emblem-new.png</file>
+        <file>folder-downloads.png</file>
+        <file>system-search.png</file>
+        <file>edit-copy.png</file>
+        <file>database.png</file>
+        <file>download.png</file>
+        <file>draw-brush.png</file>
+        <file>url.png</file>
+        <file>knotes.png</file>
+        <file>video.png</file>
+        <file>offset.png</file>
+    </qresource>
+</RCC>

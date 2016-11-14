@@ -1,0 +1,35 @@
+# Contributor: merlin <derektorr@tlen.pl>
+
+pkgname=mwidgets
+pkgver=0.12.1
+pkgrel=1
+pkgdesc="Multimedia widgets for Qt, using mplayer or phonon as a backend for playing videos"
+arch=('i686' 'x86_64')
+url="https://github.com/quntax/qpcol"
+license=('BSD')
+depends=('qt5-base' 'phonon-qt5' 'qt5-webkit' 'mplayer')
+source=('mwidgets::git+https://github.com/quntax/qpcol')
+
+
+pkgver() {
+    cat "${pkgname}/VERSION"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+
+  qmake \
+    DESIGNER_PLUGIN_INSTALL_DIR="$(qmake -query QT_INSTALL_PLUGINS)" \
+    BUILD_MODE=release \
+    MWIDGETS_LIBRARY=1 MWIDGETS_PLUGIN=1 MWIDGETS_RELEASE=1 MEDIAWIDGET=1 \
+    PREFIX=$(qmake -query QT_INSTALL_PREFIX) \
+    MEDIAWIDGET=1 \
+    "$srcdir/${pkgname}"
+
+  make -j$(nproc) || return 1
+}
+
+package() {
+  cd "$srcdir/${pkgname}"
+  make INSTALL_ROOT=$pkgdir install
+}

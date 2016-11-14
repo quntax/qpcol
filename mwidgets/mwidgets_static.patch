@@ -1,0 +1,64 @@
+diff -r a475fb1c5bdd library/library.pro
+--- a/library/library.pro	Fri Apr 17 15:44:05 2015 +0200
++++ b/library/library.pro	Fri Apr 17 16:24:46 2015 +0200
+@@ -1,8 +1,9 @@
+ include(../mwidgets.pri)
+ 
+ QT          += core gui widgets network phonon4qt5
+-CONFIG      += create_prl no_install_prl create_pc
++#CONFIG      += create_prl no_install_prl create_pc
+ TEMPLATE    = lib
++CONFIG      += staticlib
+ TARGET      = mwidgets
+ DEFINES     += MWIDGETS_LIBRARY
+ 
+@@ -61,9 +62,9 @@
+ #audioslider.files   = $$AUDIOSLIDER_HEADERS
+ #audioslider.path    = $$PREFIX/include/$$TARGET
+ 
+-PCFILES              = \
+-    $$PWD/pkgconfig/$${TARGET}.pc \
+-    $$PWD/lib$${TARGET}.prl
++#PCFILES              = \
++#    $$PWD/pkgconfig/$${TARGET}.pc \
++#    $$PWD/lib$${TARGET}.prl
+ 
+ INSTALLS = \
+     target \
+@@ -76,8 +77,8 @@
+     htmlextract
+ #    audioslider
+ 
+-QMAKE_PKGCONFIG_NAME = $${TARGET}
+-QMAKE_PKGCONFIG_DESCRIPTION = Set of multimedia widgets for Qt
+-QMAKE_PKGCONFIG_LIBDIR = $$target.path
+-QMAKE_PKGCONFIG_INCDIR = $$mwidgets_headers.path
+-QMAKE_PKGCONFIG_DESTDIR = pkgconfig
++#QMAKE_PKGCONFIG_NAME = $${TARGET}
++#QMAKE_PKGCONFIG_DESCRIPTION = Set of multimedia widgets for Qt
++#QMAKE_PKGCONFIG_LIBDIR = $$target.path
++#QMAKE_PKGCONFIG_INCDIR = $$mwidgets_headers.path
++#QMAKE_PKGCONFIG_DESTDIR = pkgconfig
+diff -r a475fb1c5bdd mwidgets.pri
+--- a/mwidgets.pri	Fri Apr 17 15:44:05 2015 +0200
++++ b/mwidgets.pri	Fri Apr 17 16:24:46 2015 +0200
+@@ -122,7 +122,7 @@
+     $${PWD}/mwidgets.pri
+ 
+ BUILD_MODE = $${BUILD_MODE}
+-QMAKE_CXXFLAGS_RELEASE = -O2 -march=native -pipe -fomit-frame-pointer -g
++QMAKE_CXXFLAGS_RELEASE = -O2 -march=native -pipe -fomit-frame-pointer
+ QMAKE_LFLAGS_RPATH=
+ 
+ !isEmpty(BUILD_MODE) {
+diff -r a475fb1c5bdd mwidgets.pro
+--- a/mwidgets.pro	Fri Apr 17 15:44:05 2015 +0200
++++ b/mwidgets.pro	Fri Apr 17 16:24:46 2015 +0200
+@@ -1,5 +1,5 @@
+ TEMPLATE	= subdirs
+-SUBDIRS		= library designerplugin
++SUBDIRS		= library
+ 
+-designerplugin.depends = library
++#designerplugin.depends = library
+ 

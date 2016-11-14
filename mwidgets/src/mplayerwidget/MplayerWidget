@@ -1,0 +1,5 @@
+#include <FlatStyle>
+#include "mplayerdispatcher.h"
+#include "mplayerprocess.h"
+#include "mplayerwidget.h"
+#include "mplayerslave.h"

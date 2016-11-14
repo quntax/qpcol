@@ -1,0 +1,25 @@
+pkgname=qpcol
+pkgver=1.4.1
+pkgrel=1
+pkgdesc="Video collection manager with tagging support and embedded player, profiled towards ease of use"
+arch=('i686' 'x86_64')
+url="https://github.com/quntax/qpcol"
+license=('BSD')
+depends=('qt5-base' 'phonon-qt5' 'qt5-webkit' 'mplayer' 'mwidgets>=0.9.8' 'sqlite' 'ffmpeg')
+source=('qpcol::git+https://github.com/quntax/qpcol')
+
+
+pkgver() {
+    cat ${pkgname}/VERSION
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  qmake PREFIX=/usr BUILD_MODE=release QPCOL_RELEASE=1
+  make -j$(nproc) || return 1
+}
+
+package() {
+  cd "$srcdir/${pkgname}"
+  make INSTALL_ROOT=$pkgdir install
+}
